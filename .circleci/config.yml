@@ -190,8 +190,8 @@ workflows:
          slack_notification: true
          slack_channel_name: probation_in_court_dev
          context:
-           - court-probation-preprod
-#            - court-case-test-app-prod
+           - hmpps-common-vars
+           - court-case-test-app-preprod
 #          requires:
 #            - request-prod-approval
 
