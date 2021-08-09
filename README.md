@@ -5,6 +5,15 @@
 ## Running the app
 The easiest way to run the app is to use docker compose to create the service and all dependencies. 
 
+### Steps:
+```docker-compose pull (1x)
+
+docker-compose up redis hmpps-auth
+
+npm install
+
+env API_CLIENT_ID={{a valid clientid}} npm run start:dev```
+
 `docker-compose pull`
 
 `docker-compose up`
