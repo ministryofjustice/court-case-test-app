@@ -1,0 +1,15 @@
+---
+# Per environment values which override defaults in court-case-test-app/values.yaml
+
+generic-service:
+  replicaCount: 2
+
+  ingress:
+    host: court-case-test-app-preprod.hmpps.service.justice.gov.uk
+    cert_secret: court-probation-preprod-cert-secret
+
+  env:
+    INGRESS_URL: "https://court-case-test-app-preprod.hmpps.service.justice.gov.uk"
+    HMPPS_AUTH_URL: "https://sign-in-preprod.hmpps.service.justice.gov.uk/auth"
+    TOKEN_VERIFICATION_API_URL: "https://token-verification-api-preprod.prison.service.justice.gov.uk"
+

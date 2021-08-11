@@ -56,3 +56,4 @@ generic-service:
 
 generic-prometheus-alerts:
   targetApplication: court-case-test-app
+  alertSeverity: prepare-a-case
