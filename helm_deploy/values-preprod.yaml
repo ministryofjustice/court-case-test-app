@@ -6,7 +6,7 @@ generic-service:
 
   ingress:
     host: court-case-test-app-preprod.hmpps.service.justice.gov.uk
-    tlsSecretName: court-case-test-app-cert
+    tlsSecretName: court-probation-preprod-cert-secret
 
   env:
     INGRESS_URL: "https://court-case-test-app-preprod.hmpps.service.justice.gov.uk"
