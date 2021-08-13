@@ -168,20 +168,18 @@ workflows:
             - integration_test
             - build_docker
 
-#      - request-preprod-approval:
-#          type: approval
-#          requires:
-#            - deploy_dev
-#      - hmpps/deploy_env:
-#          name: deploy_preprod
-#          env: "preprod"
-#          context:
-#            - hmpps-common-vars
-#            - hmpps-template-typescript-preprod
-#          requires:
-#            - request-preprod-approval
-#          requires:
-#            - deploy_preprod
+     - request-preprod-approval:
+         type: approval
+         requires:
+           - deploy_dev
+     - hmpps/deploy_env:
+         name: deploy_preprod
+         env: "preprod"
+         context:
+           - hmpps-common-vars
+           - hmpps-template-typescript-preprod
+         requires:
+           - request-preprod-approval
 
   security:
     triggers:
