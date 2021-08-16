@@ -176,7 +176,7 @@ workflows:
           env: "preprod"
           context:
             - hmpps-common-vars
-            - hmpps-template-typescript-preprod
+            - court-probation-preprod
           requires:
             - request-preprod-approval
 
