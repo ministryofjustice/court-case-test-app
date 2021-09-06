@@ -22,3 +22,14 @@ describe('GET /', () => {
       })
   })
 })
+
+describe('POST /', () => {
+  it('should render the date of hearing', () => {
+    return request(app)
+      .post('/')
+      .expect('Content-Type', /html/)
+      .expect(res => {
+        expect(res.text).toContain('This site is under construction...')
+      })
+  })
+})

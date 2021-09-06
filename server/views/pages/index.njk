@@ -7,6 +7,9 @@
   <main class="app-container govuk-body">
     <h1>This site is under construction...</h1>
     <p>Please check back later when there is content to view.</p>
-    <button>crime-portal-gateway</button>
+    <form method="post" action="/" novalidate>
+      <input type="hidden" name="_csrf" value="{{ csrfToken }}" />
+      <button type="submit">crime-portal-gateway</button>
+    </form>
   </main>
 {% endblock %}
