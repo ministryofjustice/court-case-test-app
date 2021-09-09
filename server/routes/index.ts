@@ -1,14 +1,15 @@
 import type { RequestHandler, Router } from 'express'
-// import CPGController from '../services/crimePortalGatewayController'
-import { post } from 'superagent'
+import { callTheMirrorGateway } from '../services/crimePortalGatewayController'
 import asyncMiddleware from '../middleware/asyncMiddleware'
 
 export default function routes(router: Router): Router {
   const get = (path: string, handler: RequestHandler) => router.get(path, asyncMiddleware(handler))
-  // const cpgController = new CPGController(1,2,3)
-  post(
-    'https://crime-portal-gateway-dev.apps.live-1.cloud-platform.service.justice.gov.uk/mirrorgateway/service/cpmgwextdocapi'
-  )
+  const post = (path: string, handler: RequestHandler) => router.post(path, asyncMiddleware(handler))
+
+  post('/crimePortal', async (req, res, next) => {
+    await callTheMirrorGateway
+    res.render('pages/crimePortal')
+  })
 
   get('/', (req, res, next) => {
     res.render('pages/index')
