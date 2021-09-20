@@ -38,20 +38,23 @@ import express from 'express'
 import asyncMiddleware from '../middleware/asyncMiddleware'
 
 import mirrorGatewayService from '../services/mirrorGatewayService'
+import UserService from '../services/userService'
 
 // export default function routes(Router: () => Promise<any>): Router {
 
-export default function routes(): Router {
+export default function routes(userService: Router): Router {
   const router = express.Router()
   const get = (path: string, handler: RequestHandler) => router.get(path, asyncMiddleware(handler))
   const post = (path: string, handler: RequestHandler) => router.post(path, asyncMiddleware(handler))
 
-  post('/pages/crimePortal', async (req, res) => {
+  post('/crimePortal', async (req, res) => {
     const { token } = res.locals.user
     // eslint-disable-next-line new-cap
     const response = await new mirrorGatewayService(token).getCPG()
-    console.log(response)
-    res.render(response)
+    console.log(response, 'RESPONSE')
+    if (typeof response === 'string') {
+      res.render(response)
+    }
   })
 
   get('/', (req, res, next) => {

@@ -79,6 +79,7 @@ export default class RestClient {
     try {
       const result = await superagent
         .post(`${this.apiUrl()}${path}`)
+        .set('Content-Type', 'application/soap+xml')
         .send(data)
         .agent(this.agent)
         .retry(2, (err, res) => {
