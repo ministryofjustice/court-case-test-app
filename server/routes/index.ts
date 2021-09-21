@@ -35,27 +35,28 @@ export default function routes(mirrorGatewayService: e.Router): e.Router {
 
 import type { RequestHandler, Router } from 'express'
 import express from 'express'
+import fs from 'fs'
+import path from 'path'
+
 import asyncMiddleware from '../middleware/asyncMiddleware'
-
-import mirrorGatewayService from '../services/mirrorGatewayService'
-
-// export default function routes(Router: () => Promise<any>): Router {
+import MirrorGatewayService from '../services/mirrorGatewayService'
 
 export default function routes(): Router {
   const router = express.Router()
-  const get = (path: string, handler: RequestHandler) => router.get(path, asyncMiddleware(handler))
-  const post = (path: string, handler: RequestHandler) => router.post(path, asyncMiddleware(handler))
+  const get = (routePath: string, handler: RequestHandler) => router.get(routePath, asyncMiddleware(handler))
+  const post = (routePath: string, handler: RequestHandler) => router.post(routePath, asyncMiddleware(handler))
 
-  post('/pages/crimePortal', async (req, res) => {
+  post('/crimePortal', async (req, res) => {
     const { token } = res.locals.user
-    // eslint-disable-next-line new-cap
-    const response = await new mirrorGatewayService(token).getCPG()
-    console.log(response)
-    res.render(response)
+    const soapEnvelope = fs.readFileSync(path.join(process.cwd(), './payloads/cpg-soap-payload.xml'), 'utf-8')
+    const response = await new MirrorGatewayService(token).getCPG(soapEnvelope)
+    res.send(response)
+    // res.redirect('/')
   })
 
   get('/', (req, res, next) => {
     res.render('pages/index')
   })
+
   return router
 }

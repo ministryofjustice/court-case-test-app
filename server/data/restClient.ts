@@ -19,7 +19,7 @@ interface PostRequest {
   path?: string
   headers?: Record<string, string>
   responseType?: string
-  data?: Record<string, unknown>
+  data?: string | Record<string, unknown>
   raw?: boolean
 }
 

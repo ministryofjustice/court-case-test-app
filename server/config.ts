@@ -59,7 +59,7 @@ export default {
       systemClientSecret: get('SYSTEM_CLIENT_SECRET', 'clientsecret', requiredInProduction),
     },
     cpgApi: {
-      url: get('CPG_API_URL', 'http://localhost:3001'),
+      url: get('CPG_API_URL', 'https://crime-portal-gateway-dev.apps.live-1.cloud-platform.service.justice.gov.uk'),
       timeout: {
         response: Number(get('CPG_API_TIMEOUT_RESPONSE', 10000)),
         deadline: Number(get('CPG_API_TIMEOUT_DEADLINE', 10000)),

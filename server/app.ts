@@ -6,9 +6,6 @@ import createError from 'http-errors'
 import indexRoutes from './routes'
 import nunjucksSetup from './utils/nunjucksSetup'
 import errorHandler from './errorHandler'
-import standardRouter from './routes/standardRouter'
-import type UserService from './services/userService'
-import MirrorGatewayService from './services/mirrorGatewayService'
 
 import setUpWebSession from './middleware/setUpWebSession'
 import setUpStaticResources from './middleware/setUpStaticResources'
@@ -17,10 +14,9 @@ import setUpAuthentication from './middleware/setUpAuthentication'
 import setUpHealthChecks from './middleware/setUpHealthChecks'
 import setUpWebRequestParsing from './middleware/setupRequestParsing'
 import authorisationMiddleware from './middleware/authorisationMiddleware'
-// import mirrorGatewayService from "./services/mirrorGatewayService";
 
 // eslint-disable-next-line no-shadow
-export default function createApp(userService: UserService): express.Application {
+export default function createApp(): express.Application {
   const app = express()
 
   app.set('json spaces', 2)
@@ -37,8 +33,6 @@ export default function createApp(userService: UserService): express.Application
   app.use(authorisationMiddleware())
 
   app.use('/', indexRoutes())
-  // app.use(standardRouter(userService))
-  // app.use('/', indexRoutes(MirrorGatewayService())
 
   app.use((req, res, next) => next(createError(404, 'Not found')))
   app.use(errorHandler(process.env.NODE_ENV === 'production'))

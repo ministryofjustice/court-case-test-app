@@ -31,9 +31,12 @@ export default class MirrorGatewayService {
     return new RestClient('Mirror Gateway API Client', config.apis.cpgApi, this.token)
   }
 
-  async getCPG(): Promise<any> {
-    return this.restClient().get({
-      path: 'https://crime-portal-gateway-dev.apps.live-1.cloud-platform.service.justice.gov.uk/mirrorgateway/service/cpmgwextdocapi',
+  async getCPG(soapEnvelope: string): Promise<unknown> {
+    return this.restClient().post({
+      path: '/mirrorgateway/service/cpmgwextdocapi',
+      headers: { 'Content-Type': 'application/soap+xml' },
+      data: soapEnvelope,
+      raw: true,
     })
   }
 }
