@@ -16,6 +16,8 @@ export default function routes(): Router {
     const soapEnvelope = fs.readFileSync(path.join(process.cwd(), './payloads/cpg-soap-payload.xml'), 'utf-8')
     const response = await new MirrorGatewayService(token).getCPG(soapEnvelope)
     res.send(response)
+    // res.status(200).send('Hello world!')
+    // res.set(response.req.url).send(response.header.date)
     // res.redirect('/')
   })
 
