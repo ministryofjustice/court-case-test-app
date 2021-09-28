@@ -9,6 +9,7 @@ import errorHandler from '../../errorHandler'
 // import UserService from '../../services/userService'
 import * as auth from '../../authentication/auth'
 
+/*
 const user = {
   name: 'john smith',
   firstName: 'john',
@@ -16,7 +17,7 @@ const user = {
   username: 'user1',
   displayName: 'John Smith',
 }
-/*
+
 class MockUserService extends UserService {
   constructor() {
     super(undefined)
