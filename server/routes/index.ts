@@ -1,13 +1,11 @@
 import type { RequestHandler, Router } from 'express'
-import express from 'express'
 import fs from 'fs'
 import path from 'path'
 
 import asyncMiddleware from '../middleware/asyncMiddleware'
 import MirrorGatewayService from '../services/mirrorGatewayService'
 
-export default function routes(): Router {
-  const router = express.Router()
+export default function routes(router: Router): Router {
   const get = (routePath: string, handler: RequestHandler) => router.get(routePath, asyncMiddleware(handler))
   const post = (routePath: string, handler: RequestHandler) => router.post(routePath, asyncMiddleware(handler))
 

@@ -34,8 +34,8 @@ export default function createApp(userService: UserService): express.Application
   app.use(setUpAuthentication())
   app.use(authorisationMiddleware())
 
-  app.use('/', indexRoutes())
-  app.use(standardRouter(userService))
+  app.use('/', indexRoutes(standardRouter(userService)))
+  // app.use(standardRouter(userService))
   // app.use('/', indexRoutes(MirrorGatewayService())
 
   app.use((req, res, next) => next(createError(404, 'Not found')))
