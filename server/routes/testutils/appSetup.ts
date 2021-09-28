@@ -6,10 +6,8 @@ import path from 'path'
 import allRoutes from '../index'
 import nunjucksSetup from '../../utils/nunjucksSetup'
 import errorHandler from '../../errorHandler'
-import standardRouter from '../standardRouter'
-import UserService from '../../services/userService'
+// import UserService from '../../services/userService'
 import * as auth from '../../authentication/auth'
-import mirrorGatewayService from '../../services/mirrorGatewayService'
 
 const user = {
   name: 'john smith',
@@ -18,7 +16,7 @@ const user = {
   username: 'user1',
   displayName: 'John Smith',
 }
-
+/*
 class MockUserService extends UserService {
   constructor() {
     super(undefined)
@@ -31,6 +29,7 @@ class MockUserService extends UserService {
     }
   }
 }
+ * */
 
 function appSetup(route: Router, production: boolean): Express {
   const app = express()
