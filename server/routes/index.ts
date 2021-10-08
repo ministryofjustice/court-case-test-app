@@ -11,12 +11,10 @@ export default function routes(router: Router): Router {
 
   post('/crimePortal', async (req, res) => {
     const { token } = res.locals.user
-    const soapEnvelope = fs.readFileSync(path.join(process.cwd(), './payloads/cpg-soap-payload.xml'), 'utf-8')
+    const soapEnvelope = fs.readFileSync(path.join(process.cwd(), './assets/payloads/cpg-soap-payload.xml'), 'utf-8')
     const response = await new MirrorGatewayService(token).getCPG(soapEnvelope)
+    // eslint-disable-next-line new-cap
     res.send(response)
-    // res.status(200).send('Hello world!')
-    // res.set(response.req.url).send(response.header.date)
-    // res.redirect('/')
   })
 
   get('/', (req, res, next) => {
