@@ -1,10 +1,10 @@
 /*
 import { RequestHandler, Router } from 'express'
 import asyncMiddleware from '../middleware/asyncMiddleware'
-import MirrorGatewayService from '../services/mirrorGatewayService'
+import CrimePortalGatewayApi from '../services/mirrorGatewayService'
 
 export default class mirrorGatewayController {
-  public constructor(private readonly mirrorGatewayService: MirrorGatewayService) {}
+  public constructor(private readonly mirrorGatewayService: CrimePortalGatewayApi) {}
 
   public view(): RequestHandler{
     return async (req, res) => {
@@ -17,7 +17,7 @@ export default class mirrorGatewayController {
 import { RequestHandler, Router } from 'express'
 
 import asyncMiddleware from '../../middleware/asyncMiddleware'
-// import MirrorGatewayService from '../services/mirrorGatewayService'
+// import CrimePortalGatewayApi from '../services/mirrorGatewayService'
 
 export default function Index(): Router {
   const router = Router()

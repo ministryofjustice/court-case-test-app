@@ -4,12 +4,12 @@ import asyncMiddleware from '../../middleware/asyncMiddleware'
 
 import MirrorGatewayRoutes from './mirrorGateway'
 
-import MirrorGatewayService from '../../services/mirrorGatewayService'
+import CrimePortalGatewayApi from '../../services/mirrorGatewayService'
 
 export default function mirrorGatewayRoutes({
   mirrorGatewayService,
 }: {
-  mirrorGatewayService: MirrorGatewayService
+  mirrorGatewayService: CrimePortalGatewayApi
 }): Router {
   const router = express.Router({ mergeParams: true })
   let mirrorGateway: mirrorGatewayRoutes;
