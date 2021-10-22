@@ -17,7 +17,6 @@ import setUpWebRequestParsing from './middleware/setupRequestParsing'
 import authorisationMiddleware from './middleware/authorisationMiddleware'
 import standardRouter from './routes/standardRouter'
 
-// eslint-disable-next-line no-shadow
 export default function createApp(userService: UserService): express.Application {
   const app = express()
 

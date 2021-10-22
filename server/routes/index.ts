@@ -12,12 +12,12 @@ export default function routes(router: Router): Router {
   const post = (routePath: string, handler: RequestHandler) => router.post(routePath, asyncMiddleware(handler))
 
   post('/crimePortal', async (req, res) => {
-    const { token } = res.locals.user
     const soapEnvelope = fs.readFileSync(path.join(process.cwd(), './assets/payloads/cpg-soap-payload.xml'), 'utf-8')
-    const restClient = new RestClient('Mirror Gateway API Client', config.apis.cpgApi, this.token)
+    const restClient = new RestClient('Mirror Gateway API Client', config.apis.cpgApi, 'no_auth')
     const response = await new CrimePortalGatewayApi(restClient).postPayload(soapEnvelope)
-    // eslint-disable-next-line new-cap
-    res.send(response)
+    res.locals.statusCode = response.status
+    res.locals.headerDate = response.header.date
+    res.render('pages/crimePortal')
   })
 
   get('/', (req, res, next) => {
