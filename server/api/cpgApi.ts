@@ -1,24 +1,23 @@
-/*
-import config, { ApiConfig } from '../config'
 import RestClient from '../data/restClient'
-import logger from '../../logger'
-// eslint-disable-next-line import/no-cycle
-import type mirrorGatewayController from '../routes/mirrorGateway/mirrorGateway'
 
-type CpgApi = {}
+interface CrimePortalResponse {
+  status: number
+  header: { date: string }
+}
 
-export default class CpgApi {
-  restClient: RestClient
+export default class CrimePortalGatewayApi {
+  constructor(private readonly restClient: RestClient) {}
 
-  constructor(token: string) {
-    this.restClient = new RestClient('Crime Portal Gateway API', config.apis.CpgApi as ApiConfig, token)
-  }
-
-  async getMirrorGateway(): Promise<mirrorGatewayController[]> {
-    logger.info(`cpgApi: getMirrorGateway`)
-    return (await this.restClient.get({
-      path: 'https://crime-portal-gateway-dev.apps.live-1.cloud-platform.service.justice.gov.uk/mirrorgateway/service/cpmgwextdocapi',
-    })) as Promise<mirrorGatewayController[]>
+  async postPayload(soapEnvelope: string): Promise<CrimePortalResponse> {
+    return this.restClient
+      .post({
+        path: '/mirrorgateway/service/cpmgwextdocapi',
+        headers: { 'Content-Type': 'application/soap+xml' },
+        data: soapEnvelope,
+        raw: true,
+      })
+      .then(response => {
+        return response as CrimePortalResponse
+      })
   }
 }
-* */
