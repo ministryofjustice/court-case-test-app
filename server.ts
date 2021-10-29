@@ -15,6 +15,7 @@ import logger from './logger'
 
 app.listen(app.get('port'), () => {
   const data = fs.readFileSync(path.join(__dirname, '../assets/banner.txt'), 'utf8')
+  // eslint-disable-next-line no-console
   console.log(data.toString())
   logger.info(`Server listening on port ${app.get('port')}`)
 })
