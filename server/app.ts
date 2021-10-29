@@ -6,7 +6,6 @@ import createError from 'http-errors'
 import indexRoutes from './routes'
 import nunjucksSetup from './utils/nunjucksSetup'
 import errorHandler from './errorHandler'
-import standardRouter from './routes/standardRouter'
 import type UserService from './services/userService'
 
 import setUpWebSession from './middleware/setUpWebSession'
@@ -16,6 +15,7 @@ import setUpAuthentication from './middleware/setUpAuthentication'
 import setUpHealthChecks from './middleware/setUpHealthChecks'
 import setUpWebRequestParsing from './middleware/setupRequestParsing'
 import authorisationMiddleware from './middleware/authorisationMiddleware'
+import standardRouter from './routes/standardRouter'
 
 export default function createApp(userService: UserService): express.Application {
   const app = express()

@@ -58,6 +58,14 @@ export default {
       systemClientId: get('SYSTEM_CLIENT_ID', 'clientid', requiredInProduction),
       systemClientSecret: get('SYSTEM_CLIENT_SECRET', 'clientsecret', requiredInProduction),
     },
+    cpgApi: {
+      url: get('CPG_API_URL', 'https://crime-portal-gateway-dev.apps.live-1.cloud-platform.service.justice.gov.uk'),
+      timeout: {
+        response: Number(get('CPG_API_TIMEOUT_RESPONSE', 10000)),
+        deadline: Number(get('CPG_API_TIMEOUT_DEADLINE', 10000)),
+      },
+      agent: new AgentConfig(),
+    },
     tokenVerification: {
       url: get('TOKEN_VERIFICATION_API_URL', 'http://localhost:8100', requiredInProduction),
       timeout: {

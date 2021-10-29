@@ -1,0 +1,16 @@
+{% extends "../partials/layout.njk" %}
+
+{% set pageTitle = applicationName + " - Home" %}
+
+{% block content %}
+
+    <main class="app-container govuk-body">
+        <h1>This is CRIME PORTAL</h1>
+        <h2>Status code: {{ statusCode }}</h2>
+        <h3>Date: {{ headerDate }}</h3>
+        <form method="get" action="/" novalidate>
+            <input type="hidden" name="_csrf" value="{{ csrfToken }}" />
+            <button type="submit">index</button>
+        </form>
+    </main>
+{% endblock %}
