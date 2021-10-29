@@ -1,4 +1,4 @@
-import express, { RequestHandler } from 'express'
+import { RequestHandler } from 'express'
 import logger from '../../logger'
 import UserService from '../services/userService'
 
