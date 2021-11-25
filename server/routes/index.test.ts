@@ -24,14 +24,14 @@ describe('GET /', () => {
 })
 
 // TODO: Test with Wiremock back-end
-// describe('POST /', () => {
-//   it('should render the date of hearing', () => {
-//     const todayDate = new Intl.DateTimeFormat('en-GB').format(new Date())
-//     return request(app)
-//       .post('/crimePortal')
-//       .expect('Content-Type', /html/)
-//       .expect(res => {
-//         expect(res.text).toContain(todayDate)
-//       })
-//   })
-// })
+describe('POST /', () => {
+  it('should render the date of hearing', () => {
+    const todayDate = new Intl.DateTimeFormat('en-GB').format(new Date())
+    return request(app)
+      .post('/crimePortal')
+      .expect('Content-Type', /html/)
+      .expect(res => {
+        expect(res.text).toContain(todayDate)
+      })
+  })
+})
