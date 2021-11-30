@@ -2,7 +2,6 @@ import RestClient from '../data/restClient'
 
 interface CrimePortalResponse {
   status: number
-  header: { date: string }
 }
 
 export default class CrimePortalGatewayApi {
