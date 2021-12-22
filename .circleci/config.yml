@@ -150,35 +150,25 @@ workflows:
           name: helm_lint
       - hmpps/build_docker:
           name: build_docker
-          filters:
-            branches:
-              only:
-                - main
+#          filters:
+#            branches:
+#              only:
+#                - main
       - hmpps/deploy_env:
           name: deploy_dev
           env: "dev"
-          context: hmpps-common-vars
-          filters:
-            branches:
-              only:
-                - main
+          context:
+            - hmpps-common-vars
+            - court-probation-live-dev
+#          filters:
+#            branches:
+#              only:
+#                - main
           requires:
             - helm_lint
             - unit_test
             - integration_test
             - build_docker
-      - request-preprod-approval:
-          type: approval
-          requires:
-            - deploy_dev
-      - hmpps/deploy_env:
-          name: deploy_preprod
-          env: "preprod"
-          context:
-            - hmpps-common-vars
-            - court-probation-preprod
-          requires:
-            - request-preprod-approval
 
   security:
     triggers:
