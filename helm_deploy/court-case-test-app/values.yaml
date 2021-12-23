@@ -2,7 +2,7 @@
 generic-service:
   nameOverride: court-case-test-app
 
-  replicaCount: 4
+  replicaCount: 1
 
   image:
     repository: quay.io/hmpps/court-case-test-app
@@ -13,6 +13,10 @@ generic-service:
     enabled: true
     host: app-hostname.local    # override per environment
     path: /
+    contextColour: green
+    annotations:
+      external-dns.alpha.kubernetes.io/aws-weight: "100"
+
 
   livenessProbe:
     httpGet:
