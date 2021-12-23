@@ -2,7 +2,7 @@
 generic-service:
   nameOverride: court-case-test-app
 
-  replicaCount: 4
+  replicaCount: 1
 
   image:
     repository: quay.io/hmpps/court-case-test-app
